@@ -1,0 +1,82 @@
+/* ==========================================================================
+   Design tokens — the single source of visual truth.
+   Direction: cozy pink outer space — soft pink + cream, lavender, mint green,
+   gold doodle stars, a ringed pink planet, a doodled rocket, rounded shapes,
+   sticker-style chips and a starry night footer.
+   Variable names are kept from the first version so components didn't change.
+   ========================================================================== */
+
+:root {
+  /* Palette */
+  --washi: #fff6f3;          /* page: warm pink-cream paper */
+  --washi-deep: #ffece9;     /* alternate section: blush */
+  --sumi: #2b2140;           /* ink: deep plum-indigo */
+  --sumi-soft: #5e5270;      /* secondary text (7:1 on cream) */
+  --sumi-faint: #8a7f98;     /* tertiary, non-essential text only */
+  --sakura: #f8b6c9;         /* pastel pink — decoration only */
+  --sakura-mist: #ffdbe4;    /* soft blush */
+  --sakura-deep: #c23e6e;    /* text-safe pink (5.1:1 on cream) */
+  --fuji: #cdbdf2;           /* lavender */
+  --fuji-deep: #6a55a8;
+  --gold: #f7d68f;           /* soft butter-yellow stars */
+  --gold-deep: #d99a1e;
+  --mint: #b9f2d8;           /* soft green */
+  --green: #a8e6cc;          /* pastel mint — decoration only */
+  --green-deep: #1d7a57;     /* text-safe green */
+  --purple: #c4b0f5;         /* pastel lavender — decoration only */
+  --space: #2a0e3d;
+  --night: #1e1833;          /* starry footer */
+  --line: rgb(43 33 64 / 0.12);
+
+  /* Project themes */
+  --lunar-bg: #1e1833;
+  --lunar-ink: #f1ecfb;
+  --lunar-accent: #cdbdf2;
+  --ocean-bg: #12304a;
+  --ocean-ink: #e8f3f6;
+  --ocean-accent: #9fd8e6;
+
+  /* Type */
+  --font-display: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --font-body: 'Nunito', 'Avenir Next', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-hand: 'Caveat', 'Bradley Hand', 'Segoe Print', cursive; /* doodle notes only */
+  --font-lyric: 'Courier Prime', 'Courier New', ui-monospace, monospace; /* 2010 lyric-video type */
+  --font-tech: ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, Consolas, monospace; /* pipeline diagrams only */
+
+  /* Modular scale, ratio 1.25, fluid between 360px and 1440px */
+  --step--1: clamp(0.8rem, 0.78rem + 0.1vw, 0.875rem);
+  --step-0: clamp(1rem, 0.96rem + 0.18vw, 1.125rem);
+  --step-1: clamp(1.25rem, 1.18rem + 0.3vw, 1.45rem);
+  --step-2: clamp(1.5rem, 1.36rem + 0.6vw, 1.95rem);
+  --step-3: clamp(1.9rem, 1.6rem + 1.3vw, 2.8rem);
+  --step-4: clamp(2.4rem, 1.9rem + 2.4vw, 4.2rem);
+
+  /* Space (8px rhythm) */
+  --s-1: 0.25rem;
+  --s0: 0.5rem;
+  --s1: 1rem;
+  --s2: 1.5rem;
+  --s3: 2rem;
+  --s4: 3rem;
+  --s5: 4.5rem;
+  --s6: 7rem;
+  --s7: 10rem;
+  --gutter: clamp(1rem, 4vw, 3.5rem);
+  --measure: 62ch;
+  --max: 1320px;
+
+  /* Shape: soft and rounded */
+  --radius-s: 10px;
+  --radius-m: 22px;
+  --radius-l: 34px;
+  --radius-pill: 999px;
+  --shadow-soft: 0 2px 0 rgb(255 255 255 / 0.8) inset, 0 18px 40px -22px rgb(194 62 110 / 0.35);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --t-fast: 180ms;
+  --t-med: 420ms;
+  --t-slow: 900ms;
+}

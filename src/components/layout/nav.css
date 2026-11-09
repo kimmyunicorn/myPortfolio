@@ -1,0 +1,176 @@
+.nav {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  transition: background-color var(--t-med) var(--ease-out), box-shadow var(--t-med) var(--ease-out);
+}
+.nav.is-scrolled {
+  background: rgb(255 246 243 / 0.85);
+  -webkit-backdrop-filter: saturate(1.4) blur(14px);
+  backdrop-filter: saturate(1.4) blur(14px);
+  box-shadow: 0 1px 0 var(--line);
+}
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4.25rem;
+}
+.nav__mark {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.35rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: baseline;
+  letter-spacing: -0.04em;
+}
+.nav__mark span:last-child {
+  color: var(--sakura-deep);
+  margin-left: 0.04em;
+}
+.nav__links ul {
+  display: flex;
+  gap: clamp(0.75rem, 2vw, 2rem);
+}
+.nav__link {
+  position: relative;
+  text-decoration: none;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--sumi-soft);
+  padding-block: 0.4rem;
+  transition: color var(--t-fast);
+}
+.nav__link::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sakura-deep);
+  transform: translateX(-50%) scale(0);
+  transition: transform var(--t-med) var(--ease-out);
+}
+.nav__link:hover,
+.nav__link[aria-current='true'] {
+  color: var(--sumi);
+}
+.nav__link[aria-current='true']::after {
+  transform: translateX(-50%) scale(1);
+}
+
+.nav__progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--sakura), var(--fuji), var(--gold));
+  height: 3px;
+  transform-origin: left;
+  transform: scaleX(var(--page, 0));
+}
+
+.nav__toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+}
+.nav__toggle-line {
+  position: absolute;
+  left: 11px;
+  right: 11px;
+  height: 1.5px;
+  background: var(--sumi);
+  transition: transform var(--t-med) var(--ease-out);
+}
+.nav__toggle-line--a {
+  top: 18px;
+}
+.nav__toggle-line--b {
+  top: 25px;
+}
+.is-open .nav__toggle-line--a {
+  transform: translateY(3.5px) rotate(45deg);
+}
+.is-open .nav__toggle-line--b {
+  transform: translateY(-3.5px) rotate(-45deg);
+}
+
+@media (max-width: 760px) {
+  .nav__toggle {
+    display: block;
+    z-index: 2;
+  }
+  .nav__links {
+    position: fixed;
+    inset: 0;
+    background: var(--washi);
+    display: grid;
+    place-items: center;
+    clip-path: circle(0% at calc(100% - 2.6rem) 2.1rem);
+    visibility: hidden;
+    transition: clip-path 600ms var(--ease-in-out), visibility 0s 600ms;
+  }
+  .is-open .nav__links {
+    clip-path: circle(150% at calc(100% - 2.6rem) 2.1rem);
+    visibility: visible;
+    transition: clip-path 600ms var(--ease-in-out);
+  }
+  .nav__links ul {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s2);
+  }
+  .nav__link {
+    font-family: var(--font-display);
+    font-size: var(--step-3);
+    font-weight: 700;
+    color: var(--sumi);
+  }
+  .nav__link::after {
+    bottom: 50%;
+    left: -1.1rem;
+    transform: translateY(50%) scale(0);
+  }
+  .nav__link[aria-current='true']::after {
+    transform: translateY(50%) scale(1);
+  }
+  .nav.is-open {
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+}
+
+/* Light text while floating over the dark pink-universe hero */
+.nav--on-dark:not(.is-open) .nav__mark,
+.nav--on-dark:not(.is-open) .nav__link[aria-current='true'],
+.nav--on-dark:not(.is-open) .nav__link:hover {
+  color: #fff;
+}
+.nav--on-dark:not(.is-open) .nav__mark span:last-child {
+  color: #ff9ccb;
+}
+.nav--on-dark:not(.is-open) .nav__link {
+  color: rgb(255 255 255 / 0.88);
+}
+.nav--on-dark:not(.is-open) .nav__link,
+.nav--on-dark:not(.is-open) .nav__mark {
+  text-shadow: 2px 2px 0 rgb(45 27 69 / 0.7);
+}
+.nav--on-dark:not(.is-open) .nav__link::after {
+  background: #ff9ccb;
+}
+.nav--on-dark:not(.is-open) .nav__toggle-line {
+  background: #fff;
+}

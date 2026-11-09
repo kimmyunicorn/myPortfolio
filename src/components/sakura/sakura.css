@@ -1,0 +1,256 @@
+/* ---------- Blossom ---------- */
+.blossom {
+  overflow: visible;
+}
+.blossom__petals path {
+  fill: var(--sakura);
+  stroke: var(--sumi);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+.blossom--pale .blossom__petals path {
+  fill: var(--sakura-mist);
+}
+.blossom--fuji .blossom__petals path {
+  fill: var(--fuji);
+}
+.blossom__heart {
+  fill: var(--gold);
+  stroke: var(--sumi);
+  stroke-width: 2;
+}
+
+/* ---------- Sparkles & doodle stars ---------- */
+.sparkle {
+  overflow: visible;
+}
+.sparkle path {
+  fill: var(--gold);
+}
+.sparkle--pink path {
+  fill: var(--sakura);
+}
+.sparkle--lavender path {
+  fill: var(--fuji);
+}
+.sparkle--white path {
+  fill: #fff;
+}
+.sparkle--green path {
+  fill: var(--green);
+}
+.sparkle--purple path {
+  fill: var(--purple);
+}
+
+.doodle-star {
+  overflow: visible;
+}
+.doodle-star path {
+  fill: var(--gold);
+  stroke: var(--sumi);
+  stroke-width: 2.2;
+  stroke-linejoin: round;
+}
+.doodle-star--pink path {
+  fill: var(--sakura);
+}
+.doodle-star--lavender path {
+  fill: var(--fuji);
+}
+.doodle-star--green path {
+  fill: var(--green);
+}
+
+.twinkle {
+  animation: twinkle 3.2s ease-in-out infinite;
+  animation-delay: var(--tw-delay, 0s);
+}
+@keyframes twinkle {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.72) rotate(18deg);
+    opacity: 0.7;
+  }
+}
+
+/* ---------- Planet ---------- */
+.planet {
+  overflow: visible;
+}
+.planet__ring {
+  fill: none;
+  stroke: var(--fuji);
+  stroke-width: 14;
+  stroke-linecap: round;
+}
+.planet__ring--back {
+  opacity: 0.75;
+}
+.planet__ring--front {
+  stroke: #d9cdf7;
+}
+.planet__bands path {
+  fill: none;
+  stroke: rgb(255 255 255 / 0.55);
+  stroke-width: 10;
+  stroke-linecap: round;
+}
+.planet__bands circle {
+  fill: rgb(194 62 110 / 0.14);
+}
+
+/* ---------- Rocket ---------- */
+.rocket {
+  overflow: visible;
+}
+.rocket__trail {
+  fill: none;
+  stroke: var(--sumi);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 2 9;
+  opacity: 0.45;
+}
+.rocket__body {
+  fill: #fff;
+  stroke: var(--sumi);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+.rocket__window {
+  fill: var(--fuji);
+  stroke: var(--sumi);
+  stroke-width: 2.5;
+}
+.rocket__fin {
+  fill: var(--sakura);
+  stroke: var(--sumi);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+.rocket__flame {
+  fill: var(--gold);
+  stroke: var(--sumi);
+  stroke-width: 2;
+  transform-box: fill-box;
+  transform-origin: top center;
+  animation: flame 0.5s ease-in-out infinite alternate;
+}
+@keyframes flame {
+  to {
+    transform: scaleY(0.7);
+  }
+}
+
+/* ---------- Drifting petals & sparkles ---------- */
+.petal-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.petal {
+  position: absolute;
+  top: -40px;
+  left: var(--x);
+  opacity: var(--o);
+  will-change: transform;
+  animation: petal-fall var(--dur) linear var(--delay) infinite;
+}
+.petal__svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  animation: petal-flutter calc(var(--dur) / 3) ease-in-out var(--delay) infinite alternate;
+}
+.petal__svg path {
+  fill: var(--sakura);
+}
+.petal--sparkle .petal__svg path {
+  fill: var(--gold);
+}
+
+@keyframes petal-fall {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(calc(var(--sway) * 1.6), calc(100vh + 120px), 0);
+  }
+}
+@keyframes petal-flutter {
+  0% {
+    transform: translateX(calc(var(--sway) * -0.5)) rotate(0deg) rotateX(10deg);
+  }
+  100% {
+    transform: translateX(calc(var(--sway) * 0.5)) rotate(var(--spin)) rotateX(65deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .petal:nth-child(n + 8) {
+    display: none;
+  }
+}
+
+/* ---------- Star field (dark sections) ---------- */
+.star-field {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.star-dot {
+  position: absolute;
+  width: var(--s);
+  height: var(--s);
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 6px rgb(255 255 255 / 0.6);
+  animation: star-tw var(--tw) ease-in-out var(--td) infinite;
+}
+@keyframes star-tw {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .petal {
+    animation: none;
+    top: calc(var(--depth) * 80%);
+  }
+  .petal__svg,
+  .twinkle,
+  .star-dot,
+  .rocket__flame {
+    animation: none;
+  }
+}
+
+/* ---------- Holographic stickers ---------- */
+.holo {
+  overflow: visible;
+  filter: drop-shadow(1px 3px 0 rgb(43 33 64 / 0.18)) drop-shadow(0 6px 10px rgb(194 62 110 / 0.18));
+}
+.holo__border {
+  fill: #fff;
+  stroke: #fff;
+  stroke-width: 9;
+  stroke-linejoin: round;
+}
+.holo__glint {
+  fill: rgb(255 255 255 / 0.25);
+  mix-blend-mode: soft-light;
+}
+.holo--tilt {
+  transform: rotate(var(--rot, -8deg));
+}

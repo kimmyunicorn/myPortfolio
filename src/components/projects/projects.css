@@ -1,0 +1,199 @@
+.projects {
+  background: var(--washi);
+}
+
+.pf-list {
+  display: grid;
+  gap: clamp(var(--s5), 10vw, var(--s7));
+}
+
+/* Editorial row: large media + text column, alternating sides. */
+.pf {
+  --progress: 0.5;
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(var(--s3), 5vw, var(--s5));
+  align-items: center;
+}
+.pf--flip {
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+}
+.pf--flip .pf__media {
+  order: 2;
+}
+
+.pf__media {
+  display: block;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-l);
+  overflow: hidden;
+  border: 2px solid var(--sumi);
+  box-shadow: 8px 10px 0 var(--sakura);
+}
+.pf__media-inner {
+  position: absolute;
+  inset: -8% 0;
+  transform: translate3d(0, calc((var(--progress) - 0.5) * -8%), 0) scale(1);
+  transition: scale 900ms var(--ease-out);
+}
+.pf__media:hover .pf__media-inner,
+.pf:has(.pf__title-link:hover) .pf__media-inner,
+.pf:has(.pf__cta:hover) .pf__media-inner {
+  scale: 1.035;
+}
+
+/* Theme accents on the media frame */
+.pf:nth-child(3n + 2) .pf__media {
+  box-shadow: 8px 10px 0 var(--purple);
+}
+.pf:nth-child(3n) .pf__media {
+  box-shadow: 8px 10px 0 var(--green);
+}
+.pf--lunar .pf__media {
+  box-shadow: 8px 10px 0 var(--fuji);
+}
+.pf--ocean .pf__media {
+  box-shadow: 8px 10px 0 #9fd8e6;
+}
+
+.pf__body {
+  display: grid;
+  gap: var(--s1);
+  align-content: center;
+  justify-items: start;
+}
+.pf__category {
+  font-size: var(--step--1);
+  font-weight: 700;
+  color: var(--sakura-deep);
+}
+.pf--lunar .pf__category {
+  color: var(--fuji-deep);
+}
+.pf--ocean .pf__category {
+  color: #1f6f78;
+}
+.pf__title {
+  font-size: var(--step-4);
+  line-height: 1.04;
+}
+.pf__title-link {
+  text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1.5px no-repeat;
+  transition: background-size 600ms var(--ease-out);
+}
+.pf__title-link:hover,
+.pf__title-link:focus-visible {
+  background-size: 100% 1.5px;
+}
+.pf__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0;
+  color: var(--sumi-faint);
+  font-size: var(--step--1);
+}
+.pf__meta li + li::before {
+  content: '/';
+  margin-inline: 0.6rem;
+  color: var(--line);
+  color: rgb(35 31 38 / 0.25);
+}
+.pf__summary {
+  color: var(--sumi-soft);
+  max-width: 48ch;
+}
+.pf__stat {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding-block: var(--s0);
+}
+.pf__stat strong {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.pf__stat span {
+  color: var(--sumi-soft);
+  font-size: var(--step--1);
+}
+.pf__note {
+  font-size: var(--step--1);
+  color: var(--sumi-faint);
+  max-width: 44ch;
+}
+.pf__cta {
+  margin-top: var(--s0);
+  font-weight: 500;
+  color: var(--sumi);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 2.5px solid var(--sakura);
+  transition: border-color var(--t-fast), gap var(--t-med) var(--ease-out);
+}
+.pf__cta::after {
+  content: '';
+  width: 18px;
+  height: 1.5px;
+  background: currentColor;
+  transition: width var(--t-med) var(--ease-out);
+}
+.pf__cta:hover {
+  border-color: var(--sakura-deep);
+}
+.pf__cta:hover::after {
+  width: 30px;
+}
+
+/* More projects list */
+.more {
+  margin-top: var(--s6);
+  border-top: 1px solid var(--line);
+  padding-top: var(--s3);
+}
+.more__title {
+  font-size: var(--step-2);
+  margin-bottom: var(--s2);
+}
+.more__item {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s2);
+  padding-block: var(--s1);
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+}
+.more__name {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-weight: 700;
+}
+.more__cat {
+  color: var(--sumi-faint);
+  font-size: var(--step--1);
+}
+
+@media (max-width: 860px) {
+  .pf,
+  .pf--flip {
+    grid-template-columns: 1fr;
+  }
+  .pf--flip .pf__media {
+    order: 0;
+  }
+  .pf__media {
+    border-radius: var(--radius-m);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pf__media-inner {
+    transform: none;
+  }
+}

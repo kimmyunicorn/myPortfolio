@@ -1,0 +1,241 @@
+.contact {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(45% 50% at 15% 20%, rgb(200 180 245 / 0.45), transparent 70%),
+    radial-gradient(50% 55% at 85% 30%, rgb(248 182 201 / 0.4), transparent 70%),
+    radial-gradient(40% 45% at 30% 95%, rgb(168 230 204 / 0.3), transparent 70%),
+    linear-gradient(170deg, #5d4d86 0%, #75609c 50%, #8e6aa3 100%);
+  color: #fff;
+  border-radius: var(--radius-l) var(--radius-l) 0 0;
+  padding-top: var(--s7);
+  isolation: isolate;
+}
+.contact__petals,
+.contact__stars {
+  z-index: 0;
+}
+.contact__planet {
+  position: absolute;
+  z-index: 0;
+  width: min(30vw, 340px);
+  right: -6vw;
+  bottom: 12%;
+  transform: rotate(12deg);
+  filter: drop-shadow(0 0 40px rgb(248 182 201 / 0.45));
+}
+.contact__moon {
+  position: absolute;
+  z-index: 0;
+  width: min(12vw, 140px);
+  left: 4vw;
+  top: 14%;
+  transform: rotate(-18deg);
+  filter: hue-rotate(165deg) saturate(0.7) brightness(1.08) drop-shadow(0 0 26px rgb(168 230 204 / 0.45));
+}
+.contact__rocket {
+  position: absolute;
+  z-index: 0;
+  width: min(22vw, 260px);
+  left: 6vw;
+  bottom: 14%;
+  transform: scaleX(-1) rotate(-10deg);
+}
+.contact__rocket .rocket__trail {
+  stroke: #fff;
+}
+.contact__glow {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  width: min(90vw, 900px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%) scale(0.6);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(247 168 191 / 0.18), rgb(205 189 242 / 0.08) 40%, transparent 65%);
+  opacity: 0;
+  transition: opacity 1.6s var(--ease-out), transform 2s var(--ease-out);
+  z-index: 0;
+}
+.contact.is-in .contact__glow {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.contact__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: var(--s2);
+}
+/* ---------- Renewal-notice card ---------- */
+.notice {
+  position: relative;
+  width: min(100%, 30rem);
+  margin-bottom: var(--s3);
+  padding: var(--s2) var(--s3);
+  text-align: left;
+  color: var(--sumi);
+  background:
+    repeating-linear-gradient(0deg, transparent 0 27px, rgb(194 62 110 / 0.12) 27px 28px),
+    #fff0f6;
+  border-radius: 6px;
+  box-shadow: 0 18px 40px -16px rgb(0 0 0 / 0.5);
+  font-family: var(--font-lyric);
+  transform: rotate(1.5deg) translateY(20px);
+  opacity: 0;
+  transition: opacity 0.8s var(--ease-out), transform 0.9s var(--ease-bounce);
+}
+.contact.is-in .notice {
+  opacity: 1;
+  transform: rotate(1.5deg);
+}
+.notice__head {
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--sakura-deep);
+  border-bottom: 2px solid var(--sumi);
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.6rem;
+}
+.notice__fields {
+  margin: 0;
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.92rem;
+}
+.notice__fields div {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: 0.5rem;
+}
+.notice__fields dt {
+  font-weight: 700;
+}
+.notice__fields dd {
+  margin: 0;
+}
+.notice__stamp {
+  position: absolute;
+  right: -14px;
+  bottom: -30px;
+  padding: 0.15rem 0.6rem;
+  background: rgb(255 240 246 / 0.7);
+  border: 3px solid rgb(150 120 210 / 0.55);
+  border-radius: 6px;
+  color: rgb(130 100 195 / 0.7);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  transform: rotate(-16deg);
+  pointer-events: none;
+}
+.notice__holo {
+  position: absolute;
+  right: -18px;
+  top: -20px;
+}
+@media (max-width: 520px) {
+  .notice__fields div {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+.contact__title {
+  font-size: clamp(2.6rem, 1.4rem + 6vw, 7.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  max-width: 14ch;
+}
+.contact__lead {
+  max-width: 46ch;
+  color: rgb(255 255 255 / 0.88);
+  font-size: var(--step-1);
+}
+
+.contact__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--s1);
+  margin-top: var(--s2);
+}
+.contact__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 1rem 1.6rem;
+  border-radius: var(--radius-pill);
+  border: 2px solid rgb(255 255 255 / 0.6);
+  background: rgb(255 255 255 / 0.12);
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 400ms var(--ease-out), color var(--t-med), border-color var(--t-med);
+}
+.contact__btn svg {
+  fill: currentColor;
+}
+.contact__btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--sakura);
+  border-radius: inherit;
+  transform: scale(0);
+  transition: transform 500ms var(--ease-bounce);
+}
+a.contact__btn:hover,
+a.contact__btn:focus-visible {
+  color: var(--sumi);
+  border-color: var(--sakura);
+}
+a.contact__btn:hover::before,
+a.contact__btn:focus-visible::before {
+  transform: scale(1.05);
+}
+.contact__btn.is-pending {
+  opacity: 0.5;
+  cursor: default;
+}
+.contact__btn small {
+  font-size: 0.75em;
+  opacity: 0.8;
+}
+.contact :focus-visible {
+  outline-color: var(--sakura);
+}
+
+.contact__base {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s2);
+  margin-top: var(--s7);
+  padding-block: var(--s3);
+  border-top: 1px solid rgb(255 255 255 / 0.12);
+  font-size: var(--step--1);
+  color: rgb(255 255 255 / 0.85);
+}
+.contact__top {
+  text-decoration: none;
+}
+.contact__top:hover {
+  color: #fff;
+}
+
+@media (max-width: 760px) {
+  .contact__rocket {
+    display: none;
+  }
+}

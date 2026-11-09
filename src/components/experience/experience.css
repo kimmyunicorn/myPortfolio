@@ -1,0 +1,201 @@
+.experience {
+  background:
+    radial-gradient(circle, rgb(196 176 245 / 0.35) 1.5px, transparent 2px) 0 0 / 34px 34px,
+    linear-gradient(180deg, #f6eeff, #ffeef5);
+}
+
+.tl {
+  --progress: 0;
+  position: relative;
+}
+.tl__list {
+  display: grid;
+  gap: var(--s4);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* Dashed line down the centre that fills with scroll progress */
+.tl__line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  margin-left: -1px;
+  background: repeating-linear-gradient(180deg, rgb(43 33 64 / 0.22) 0 6px, transparent 6px 14px);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.tl__fill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--sakura), var(--purple) 50%, var(--green));
+  transform-origin: top;
+  transform: scaleY(var(--progress));
+}
+
+.tl__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 64px 1fr;
+  align-items: start;
+}
+/* Stagger alternating cards so the two columns interlock instead of leaving gaps. */
+@media (min-width: 761px) {
+  .tl__item + .tl__item {
+    margin-top: calc(-1 * var(--s5));
+  }
+}
+.tl__node {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: center;
+  margin-top: 1.35rem;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  z-index: 1;
+  transform: scale(0.3) rotate(-60deg);
+  opacity: 0.4;
+  transition: transform 700ms var(--ease-bounce), opacity 700ms var(--ease-out);
+}
+.tl__item.is-in .tl__node {
+  transform: none;
+  opacity: 1;
+}
+
+.tl__card {
+  grid-row: 1;
+  position: relative;
+  padding: var(--s2) var(--s3);
+  background: #fff;
+  border: 1.5px solid rgb(43 33 64 / 0.1);
+  box-shadow: var(--shadow-soft);
+  border-radius: var(--radius-m);
+  opacity: 0;
+  transition: opacity 800ms var(--ease-out), transform 800ms var(--ease-out), box-shadow var(--t-med);
+}
+.tl__item--left .tl__card {
+  grid-column: 1;
+  transform: translateX(-24px);
+}
+.tl__item--right .tl__card {
+  grid-column: 3;
+  transform: translateX(24px);
+}
+.tl__item.is-in .tl__card {
+  opacity: 1;
+  transform: none;
+}
+.tl__card:hover {
+  box-shadow: 0 2px 0 rgb(255 255 255 / 0.8) inset, 0 24px 48px -22px rgb(194 62 110 / 0.45);
+}
+
+.tl__period {
+  font-size: var(--step--1);
+  font-weight: 700;
+  color: var(--sakura-deep);
+  font-variant-numeric: tabular-nums;
+}
+.tl__role {
+  font-size: var(--step-2);
+  margin-top: 0.2rem;
+}
+.tl__org {
+  margin-top: 0.25rem;
+  color: var(--sumi-soft);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.75rem;
+}
+.tl__org span {
+  color: var(--sumi-faint);
+}
+
+.tl__toggle {
+  margin-top: var(--s1);
+  padding: 0.4rem 0;
+  background: none;
+  border: 0;
+  font-size: var(--step--1);
+  font-weight: 700;
+  color: var(--sumi);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  border-bottom: 2px solid var(--sakura-mist);
+}
+.tl__toggle:hover {
+  border-bottom-color: var(--sakura);
+}
+.tl__chev {
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform var(--t-med) var(--ease-out);
+}
+.is-open .tl__chev {
+  transform: translateY(1px) rotate(-135deg);
+}
+
+/* Height animation via grid rows: 0fr → 1fr */
+.tl__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 500ms var(--ease-out);
+}
+.is-open .tl__panel {
+  grid-template-rows: 1fr;
+}
+.tl__panel-inner {
+  overflow: hidden;
+  display: grid;
+  gap: var(--s1);
+  min-height: 0;
+}
+.is-open .tl__panel-inner {
+  padding-top: var(--s1);
+}
+.tl__details {
+  color: var(--sumi-soft);
+  max-width: 52ch;
+}
+.tl__case {
+  justify-self: start;
+  font-weight: 700;
+  color: var(--sakura-deep);
+  text-underline-offset: 0.25em;
+}
+.tl__verify {
+  margin-top: var(--s1);
+  display: grid;
+  gap: 0.35rem;
+}
+
+@media (max-width: 760px) {
+  .tl__line {
+    left: 16px;
+  }
+  .tl__item {
+    grid-template-columns: 34px 1fr;
+    gap: var(--s1);
+  }
+  .tl__node {
+    grid-column: 1;
+  }
+  .tl__item--left .tl__card,
+  .tl__item--right .tl__card {
+    grid-column: 2;
+    transform: translateY(18px);
+  }
+  .tl__card {
+    padding: var(--s1) var(--s2) var(--s2);
+  }
+}
