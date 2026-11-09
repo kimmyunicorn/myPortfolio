@@ -1,11 +1,11 @@
-// Contact links shown in the nav and footer.
+// Contact links shown in the footer.
 // Set `href` to null to show the button as "coming soon" instead of a broken link.
 
 export const socials = [
   {
     id: 'linkedin',
     label: 'LinkedIn',
-    href: null, // TODO(Kimberly): paste your public LinkedIn URL, e.g. 'https://www.linkedin.com/in/your-handle/'
+    href: 'https://www.linkedin.com/in/kimberly-cama%C3%B1ero-0246a2269/',
   },
   {
     id: 'github',
@@ -15,6 +15,6 @@ export const socials = [
   {
     id: 'email',
     label: 'Email',
-    href: null, // TODO(Kimberly): e.g. 'mailto:you@example.com' — use an address you're happy to make public
+    href: 'mailto:kc5225@nyu.edu',
   },
 ];
