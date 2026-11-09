@@ -200,7 +200,7 @@ const STICKER_PATHS = {
   sparkle: 'M50 4 C54 38 62 46 96 50 C62 54 54 62 50 96 C46 62 38 54 4 50 C38 46 46 38 50 4 Z',
 };
 
-/** A die-cut holographic sticker (white border, shimmering rainbow-pink foil). */
+/** A die-cut foil sticker (white border, shimmering soft-yellow foil). */
 export function HoloSticker({ shape = 'star', size = 64, className = '', style }) {
   const id = `holo-${useId().replace(/:/g, '')}`;
   return (
@@ -215,12 +215,12 @@ export function HoloSticker({ shape = 'star', size = 64, className = '', style }
     >
       <defs>
         <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#ffb3d9" />
-          <stop offset="25%" stopColor="#d7b8ff" />
-          <stop offset="45%" stopColor="#b8fff0" />
-          <stop offset="65%" stopColor="#fff2b3" />
-          <stop offset="85%" stopColor="#ff9ccf" />
-          <stop offset="100%" stopColor="#c9a6ff" />
+          {/* Soft butter-yellow foil with a gentle shimmer */}
+          <stop offset="0%" stopColor="#ffe9a8" />
+          <stop offset="30%" stopColor="#ffd970" />
+          <stop offset="50%" stopColor="#fff4cc" />
+          <stop offset="70%" stopColor="#ffd25e" />
+          <stop offset="100%" stopColor="#ffe9a8" />
           <animateTransform
             attributeName="gradientTransform"
             type="rotate"
