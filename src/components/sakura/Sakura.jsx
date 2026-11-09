@@ -1,7 +1,6 @@
 // Decorative graphics for the "cozy space girl" look: blossoms, sparkles,
 // doodled stars, a ringed pink planet, a little rocket, and drifting particles.
 // Pure SVG + CSS animation (transform/opacity only). No images, no canvas.
-import { useId } from 'react';
 import './sakura.css';
 
 // Seeded PRNG so placement is identical on every render.
@@ -200,9 +199,8 @@ const STICKER_PATHS = {
   sparkle: 'M50 4 C54 38 62 46 96 50 C62 54 54 62 50 96 C46 62 38 54 4 50 C38 46 46 38 50 4 Z',
 };
 
-/** A die-cut foil sticker (white border, shimmering soft-yellow foil). */
+/** A die-cut sticker: white border, solid pastel yellow. */
 export function HoloSticker({ shape = 'star', size = 64, className = '', style }) {
-  const id = `holo-${useId().replace(/:/g, '')}`;
   return (
     <svg
       className={`holo ${className}`}
@@ -213,26 +211,8 @@ export function HoloSticker({ shape = 'star', size = 64, className = '', style }
       aria-hidden="true"
       focusable="false"
     >
-      <defs>
-        <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
-          {/* Soft butter-yellow foil with a gentle shimmer */}
-          <stop offset="0%" stopColor="#ffe9a8" />
-          <stop offset="30%" stopColor="#ffd970" />
-          <stop offset="50%" stopColor="#fff4cc" />
-          <stop offset="70%" stopColor="#ffd25e" />
-          <stop offset="100%" stopColor="#ffe9a8" />
-          <animateTransform
-            attributeName="gradientTransform"
-            type="rotate"
-            values="0 0.5 0.5;360 0.5 0.5"
-            dur="6s"
-            repeatCount="indefinite"
-          />
-        </linearGradient>
-      </defs>
       <path d={STICKER_PATHS[shape]} className="holo__border" fillRule="evenodd" />
-      <path d={STICKER_PATHS[shape]} fill={`url(#${id})`} fillRule="evenodd" className="holo__foil" />
-      <path d={STICKER_PATHS[shape]} className="holo__glint" fillRule="evenodd" />
+      <path d={STICKER_PATHS[shape]} fill="#fde68a" fillRule="evenodd" className="holo__foil" />
     </svg>
   );
 }
